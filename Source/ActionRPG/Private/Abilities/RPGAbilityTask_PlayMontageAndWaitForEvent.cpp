@@ -82,7 +82,8 @@ void URPGAbilityTask_PlayMontageAndWaitForEvent::OnMontageEnded(UAnimMontage* Mo
 	EndTask();
 }
 
-void URPGAbilityTask_PlayMontageAndWaitForEvent::OnGameplayEvent(FGameplayTag EventTag, const FGameplayEventData* Payload)
+void URPGAbilityTask_PlayMontageAndWaitForEvent::
+OnGameplayEvent(FGameplayTag EventTag, const FGameplayEventData* Payload)
 {
 	if (ShouldBroadcastAbilityTaskDelegates())
 	{
@@ -137,7 +138,7 @@ void URPGAbilityTask_PlayMontageAndWaitForEvent::Activate()
 				}
 
 				CancelledHandle = Ability->OnGameplayAbilityCancelled.AddUObject(this, &URPGAbilityTask_PlayMontageAndWaitForEvent::OnAbilityCancelled);
-
+				
 				BlendingOutDelegate.BindUObject(this, &URPGAbilityTask_PlayMontageAndWaitForEvent::OnMontageBlendingOut);
 				AnimInstance->Montage_SetBlendingOutDelegate(BlendingOutDelegate, MontageToPlay);
 

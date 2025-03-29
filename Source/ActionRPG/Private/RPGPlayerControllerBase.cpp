@@ -6,7 +6,7 @@
 #include "RPGSaveGame.h"
 #include "Items/RPGItem.h"
 
-bool ARPGPlayerControllerBase::AddInventoryItem(URPGItem* NewItem, int32 ItemCount, int32 ItemLevel, bool bAutoSlot)
+bool ARPGPlayerControllerBase::	AddInventoryItem(URPGItem* NewItem, int32 ItemCount, int32 ItemLevel, bool bAutoSlot)
 {
 	bool bChanged = false;
 	if (!NewItem)

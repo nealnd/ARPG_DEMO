@@ -26,6 +26,7 @@ UAbilitySystemComponent* ARPGCharacterBase::GetAbilitySystemComponent() const
 void ARPGCharacterBase::AddStartupGameplayAbilities()
 {
 	check(AbilitySystemComponent);
+
 	
 	if (GetLocalRole() == ROLE_Authority && !bAbilitiesInitialized)
 	{
@@ -142,14 +143,14 @@ void ARPGCharacterBase::FillSlottedAbilitySpecs(TMap<FRPGItemSlot, FGameplayAbil
 
 void ARPGCharacterBase::AddSlottedGameplayAbilities()
 {
+	
 	TMap<FRPGItemSlot, FGameplayAbilitySpec> SlottedAbilitySpecs;
 	FillSlottedAbilitySpecs(SlottedAbilitySpecs);
 	
 	// Now add abilities if needed
 	for (const TPair<FRPGItemSlot, FGameplayAbilitySpec>& SpecPair : SlottedAbilitySpecs)
 	{
-		FGameplayAbilitySpecHandle& SpecHandle = SlottedAbilities.FindOrAdd(SpecPair.Key);
-
+		FGameplayAbilitySpecHandle& SpecHandle =SlottedAbilities.FindOrAdd(SpecPair.Key);
 		if (!SpecHandle.IsValid())
 		{
 			SpecHandle = AbilitySystemComponent->GiveAbility(SpecPair.Value);
@@ -308,7 +309,7 @@ bool ARPGCharacterBase::ActivateAbilitiesWithItemSlot(FRPGItemSlot ItemSlot, boo
 	}
 
 	return false;
-}
+}	
 
 void ARPGCharacterBase::GetActiveAbilitiesWithItemSlot(FRPGItemSlot ItemSlot, TArray<URPGGameplayAbility*>& ActiveAbilities)
 {
@@ -343,6 +344,7 @@ bool ARPGCharacterBase::ActivateAbilitiesWithTags(FGameplayTagContainer AbilityT
 
 void ARPGCharacterBase::GetActiveAbilitiesWithTags(FGameplayTagContainer AbilityTags, TArray<URPGGameplayAbility*>& ActiveAbilities)
 {
+	
 	if (AbilitySystemComponent)
 	{
 		AbilitySystemComponent->GetActiveAbilitiesWithTags(AbilityTags, ActiveAbilities);

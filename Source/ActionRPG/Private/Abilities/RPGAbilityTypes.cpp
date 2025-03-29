@@ -18,7 +18,7 @@ void FRPGGameplayEffectContainerSpec::AddTargets(const TArray<FHitResult>& HitRe
 {
 	for (const FHitResult& HitResult : HitResults)
 	{
-		FGameplayAbilityTargetData_SingleTargetHit* NewData = new FGameplayAbilityTargetData_SingleTargetHit(HitResult);
+			FGameplayAbilityTargetData_SingleTargetHit* NewData = new FGameplayAbilityTargetData_SingleTargetHit(HitResult);
 		TargetData.Add(NewData);
 	}
 
